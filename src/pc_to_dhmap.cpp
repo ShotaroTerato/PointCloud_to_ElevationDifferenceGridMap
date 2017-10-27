@@ -55,7 +55,7 @@ int main(int argc, char** argv)
   //ros::Rate r(0.5);
   
   //if(pcl::io::loadPCDFile<pcl::PointXYZ>("/home/tera/0.pcd", *pcl_pc_in) == -1){
-  if(pcl::io::loadPCDFile<pcl::PointXYZ>("/home/tera/pcdfile/churin_edit.pcd", *pcl_pc_in) == -1){
+  if(pcl::io::loadPCDFile<pcl::PointXYZ>("/home/tera/pcdfile/uramon_edit.pcd", *pcl_pc_in) == -1){
     ROS_ERROR("Couldn't read pcd file");
     return(-1);
   }
@@ -64,14 +64,15 @@ int main(int argc, char** argv)
   outrem.setInputCloud(pcl_pc_in);
   outrem.setRadiusSearch(0.8);
   outrem.setMinNeighborsInRadius(2);
-  outrem.filter(*outrem_pc);
+  //outrem.filter(*outrem_pc);
+  outrem.filter(*voxel_pc);
   
   ROS_WARN("outrem");
   
-  pcl::VoxelGrid<pcl::PointXYZ> sor;
-  sor.setInputCloud(outrem_pc);
-  sor.setLeafSize(0.1f, 0.1f, 0.1f);
-  sor.filter(*voxel_pc);
+  //pcl::VoxelGrid<pcl::PointXYZ> sor;
+  //sor.setInputCloud(outrem_pc);
+  //sor.setLeafSize(0.1f, 0.1f, 0.1f);
+  //sor.filter(*voxel_pc);
   
   ROS_WARN("voxel");
   //pcl::toROSMsg(*voxel_pc, pc_in_);
