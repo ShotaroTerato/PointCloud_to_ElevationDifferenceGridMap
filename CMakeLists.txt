@@ -41,9 +41,14 @@ include_directories(
 
 ## Declare a C++ executable
 add_executable(pc_to_dhmap src/pc_to_dhmap.cpp)
+add_executable(pc_to_occmap src/pc_to_occmap.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(pc_to_dhmap
+ ${catkin_LIBRARIES}
+ ${PCL_LIBRARIES}
+)
+target_link_libraries(pc_to_occmap
  ${catkin_LIBRARIES}
  ${PCL_LIBRARIES}
 )
